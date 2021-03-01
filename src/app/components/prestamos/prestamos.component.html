@@ -1,1 +1,17 @@
-<p>prestamos works!</p>
+<p>Dinero disponible</p>
+<p class="dineroDisp">
+    ${{ dineroDisp | number:'1.0':'es' }}
+</p>
+<div class="form-group">
+    <label for="exampleInputEmail1">Valor Solicitado</label>
+    <input 
+           currencyMask
+           type="tel" 
+           class="form-control" 
+           aria-describedby="emailHelp" 
+           placeholder="Este es el valor que solicitó" 
+           name="dineroPrestamo"
+           [formControl]="dineroPrestamo"
+           [options]="{ align: 'left', prefix: '$ ', thousands: '.', decimal: ',', precision: 0 }">
+    <div *ngIf="errorDineroPrestamo" class="error">Debe solicitar un valor entre $ {{env.montoMinPrestamo | number:'1.0':'es'}} y $ {{env.montoMaxPrestamo | number:'1.0':'es'}}</div>
+</div>
