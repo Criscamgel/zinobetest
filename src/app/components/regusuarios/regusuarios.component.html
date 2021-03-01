@@ -6,7 +6,8 @@
         class="form-control"
         formControlName="nombre"
         placeholder="Ingrese su nombre y apellidos">
-      <div class="error">Diligencie su nombre</div>
+      <div *ngIf="nombreExiste" class="error">Diligencie su nombre</div>
+      <div *ngIf="nombreNovalido" class="error">Nombre invalido</div>
     </div>
 
     <div class="form-group">
@@ -16,8 +17,8 @@
           class="form-control"
           formControlName="correo"
           placeholder="Ingrese su correo">
-        <div class="error">Diligencie su correo</div>
-        <div class="error">Correo invalido</div>
+        <div *ngIf="correoExiste" class="error">Diligencie su correo</div>
+        <div *ngIf="correoNovalido" class="error">Correo invalido</div>
     </div>
 
     <div class="form-group">
@@ -29,18 +30,17 @@
           placeholder="ingrese su cédula"
           (keypress)="patternCoincide($event, env.patternNumber)"
           >
-        <div class="error">Diligencie si cédula</div>
+        <div *ngIf="cedulaExiste" class="error">Diligencie su cédula</div>
+        <div *ngIf="cedulaNovalido" class="error">Cedula invalida</div>
     </div>
 
     <div class="form-group">
-        <label>Valor Solicitado</label>
-        <input 
-          type="number"
-          class="form-control"
-          formControlName="valorSolicitado"
-          placeholder="Este es el valor que solicitó" readonly>
-        <div class="error">Debe solicitar un valor de prestamo</div>
-    </div>
+          <label>Valor Solicitado</label><br/>
+          $ {{ dataUser.deudor.valorSolicitado | number:'1.0':'es' }}
+          <div 
+          *ngIf="dataUser.errorDineroPrestamo" 
+          class="error">Debe solicitar un valor de prestamo</div>
+          </div>
 
     <div class="form-group">
         <label>Fecha pagar</label>
@@ -49,7 +49,6 @@
           class="form-control"
           formControlName="fechaPagar"
           placeholder="fecha a pagar">
-        <div class="error"></div>
     </div>
 
     <div class="form-group">
@@ -59,16 +58,16 @@
             type="checkbox"
             value=""
             formControlName="pagoCredito"
-            id="invalidCheck"
-            required>
+            id="invalidCheck">
           <label class="form-check-label" for="invalidCheck">
            Pago a crédito?
           </label>
-          <div class="error">
-            Escoja si prefiere un pago a crédito
-          </div>
         </div>
       </div>
 
-    <button type="submit" class="btn btn-primary btn-lg solicitar">Solicitar prestamo</button>
+    <button 
+      type="submit" 
+      class="btn btn-primary btn-lg solicitar"
+      [disabled]="dataDeudor.invalid || dataUser.errorDineroPrestamo"
+      >Solicitar prestamo</button>
 </form>

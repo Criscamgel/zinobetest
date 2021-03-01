@@ -13,5 +13,5 @@
            name="dineroPrestamo"
            [formControl]="dineroPrestamo"
            [options]="{ align: 'left', prefix: '$ ', thousands: '.', decimal: ',', precision: 0 }">
-    <div *ngIf="errorDineroPrestamo" class="error">Debe solicitar un valor entre $ {{env.montoMinPrestamo | number:'1.0':'es'}} y $ {{env.montoMaxPrestamo | number:'1.0':'es'}}</div>
+    <div *ngIf="dataUser.errorDineroPrestamo" class="error">Debe solicitar un valor entre $ {{env.montoMinPrestamo | number:'1.0':'es'}} y $ {{env.montoMaxPrestamo | number:'1.0':'es'}}</div>
 </div>
