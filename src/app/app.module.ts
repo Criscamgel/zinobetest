@@ -10,6 +10,7 @@ import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { ModalContenidoComponent } from './components/modal-contenido/modal-contenido.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -18,7 +19,8 @@ registerLocaleData(localeEs, 'es');
     AppComponent,
     PrestamosComponent,
     RegusuariosComponent,
-    LoaderComponent
+    LoaderComponent,
+    ModalContenidoComponent
   ],
   imports: [
     BrowserModule,

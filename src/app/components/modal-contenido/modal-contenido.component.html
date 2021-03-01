@@ -1,0 +1,21 @@
+<div class="contenedor">
+    <app-loader *ngIf="dataUser.loader"></app-loader>
+    <div class="contenido">
+        <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Respuesta de solicitud</h4>
+        </div>
+        <div class="modal-body">
+            <div [ngSwitch]="dataUser.deudor.respuesta">
+                <div class="positivo text-center" *ngSwitchCase="1">
+                    <i class="fa fa-check-circle fa-3" aria-hidden="true"></i>
+                    <p>Felicitaciones, tu prestamo ha sido aprobado</p>
+                </div>
+
+                <div class="negativo text-center" *ngSwitchCase="0">
+                    <i class="fa fa-times-circle fa-3" aria-hidden="true"></i>
+                    <p>Lo sentimos, tu prestamo ha sido denegado</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

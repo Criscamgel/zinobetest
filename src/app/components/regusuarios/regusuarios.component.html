@@ -1,4 +1,4 @@
-<form [formGroup]="dataDeudor">
+<form [formGroup]="dataDeudor" (ngSubmit)="dataUser.viabilizar(); dataDeudor.reset()">
     <div class="form-group">
       <label>Nombre</label>
       <input 
